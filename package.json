@@ -1,0 +1,22 @@
+{
+  "name": "movies-verse",
+  "version": "1.0.0",
+  "description": "a website that displays info about the movie u searched for",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prasantgupta52/Movies-Verse.git"
+  },
+  "author": "prasantgupta52",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prasantgupta52/Movies-Verse/issues"
+  },
+  "homepage": "https://github.com/prasantgupta52/Movies-Verse",
+  "dependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
