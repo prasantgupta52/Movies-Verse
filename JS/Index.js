@@ -10,19 +10,30 @@ getComingSoon();
 
 
 
-
 async function getComingSoon() {
-  const resp = await fetch(
-      "https://imdb-api.com/en/API/ComingSoon/k_7oioc1x6"
-  );
-  const respData = await resp.json();
-  const comingsoon = respData.items[0];
-  const imdbid = comingsoon.id;
-  const poster = await fetch(
-    `https://imdb-api.com/en/API/Posters/k_7oioc1x6/${imdbid}`
-  );
-  const Poster = await poster.json();
-  addMovie(comingsoon,Poster.posters, true);
+  try {
+    const resp = await fetch(
+        "https://imdb-api.com/en/API/ComingSoon/k_7oioc1x6"
+    );
+    const respData = await resp.json();
+    const comingsoon = respData.items[0];
+    const imdbid = comingsoon.id;
+    const poster = await fetch(
+      `https://imdb-api.com/en/API/Posters/k_7oioc1x6/${imdbid}`
+    );
+    const Poster = await poster.json();
+    addMovie(comingsoon,Poster.posters, true);
+  } catch (error) {
+    movies.innerHTML="";
+    // console.log("kkk+");
+    // console.log(error);
+    const err = document.createElement("div");
+    err.innerHTML = 
+    `<div class="fav-container pink">
+    <h3>Sorry..! Come Back Tommorow <br> Today's API limit Exceded</h3>
+    </div>`;
+    movies.appendChild(err);
+  }
 }
 
 
@@ -45,7 +56,7 @@ async function showMovieInfo(movieeData) {
       <img
           src="${poster.link}"
           alt="${movieeeData.title}"/>
-      <p>${movieeeData.wikipedia.plotFull.plainText}</p>`;
+      <p>${movieeeData.wikipedia.plotShort.plainText}</p>`;
       // <h3>Ingredients:</h3>
       // <ul>${ingredients.map((ing) => `<li>${ing}</li>`).join("")}</ul>`;
 
