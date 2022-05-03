@@ -14,6 +14,10 @@ body {
   min-height: 100vh;
 }
 
+img {
+  max-width: 100%;
+}
+
 .container {
   background-color: #fff;
   box-shadow: 0 0 10px 2px #3333331a;
@@ -49,6 +53,54 @@ header button {
   background-color: #98cbe3;
   padding: 0.25rem 1rem;
   text-align: center;
+}
+
+.fav-movie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.fav-movie li {
+  cursor: pointer;
+  position: relative;
+  margin: 5px;
+  width: 75px;
+}
+
+.fav-movie li .clear {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  font-size: 1.2rem;
+}
+
+.fav-movie li:hover .clear {
+  opacity: 1;
+}
+
+.fav-movie li img {
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px #3333331a;
+  object-fit: cover;
+  height: 70px;
+  width: 70px;
+}
+
+.fav-movie li span {
+  display: inline-block;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 75px;
 }
 
 .movie {
@@ -101,7 +153,67 @@ header button {
   color: #e66b6b;
 }
 
+.popup-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
 .popup-container.hidden {
   opacity: 0;
   pointer-events: none;
 }
+
+.popup {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 0 2rem;
+  position: relative;
+  overflow: auto;
+  max-height: 95vh;
+  max-width: 600px;
+  width: 100%;
+}
+
+.popup .close-popup {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.meal-info h1 {
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* .fa-times:before{content:"\f00d"}
+.fa-search:before{content:"\f002"}
+.fas{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;line-height:1}
+.sr-only{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}
+.sr-only-focusable:active,.sr-only-focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}
+@font-face{font-family:"Font Awesome 5 Brands";font-style:normal;font-weight:400;font-display:block;src:url(../webfonts/fa-brands-400.eot);src:url(../webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),url(../webfonts/fa-brands-400.woff2) format("woff2"),url(../webfonts/fa-brands-400.woff) format("woff"),url(../webfonts/fa-brands-400.ttf) format("truetype"),url(../webfonts/fa-brands-400.svg#fontawesome) format("svg")}
+.fab{font-family:"Font Awesome 5 Brands"}
+@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:400;font-display:block;src:url(../webfonts/fa-regular-400.eot);src:url(../webfonts/fa-regular-400.eot?#iefix) format("embedded-opentype"),url(../webfonts/fa-regular-400.woff2) format("woff2"),url(../webfonts/fa-regular-400.woff) format("woff"),url(../webfonts/fa-regular-400.ttf) format("truetype"),url(../webfonts/fa-regular-400.svg#fontawesome) format("svg")}
+.fab,.far{font-weight:400}
+@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:900;font-display:block;src:url(../webfonts/fa-solid-900.eot);src:url(../webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(../webfonts/fa-solid-900.woff2) format("woff2"),url(../webfonts/fa-solid-900.woff) format("woff"),url(../webfonts/fa-solid-900.ttf) format("truetype"),url(../webfonts/fa-solid-900.svg#fontawesome) format("svg")}
+.fa,.far,.fas{font-family:"Font Awesome 5 Free"}
+.fa,.fas{font-weight:900} */

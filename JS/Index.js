@@ -2,8 +2,14 @@ const movies = document.getElementById("movies");
 const searchBtn = document.getElementById("search");
 const searchTerm = document.getElementById("search-term");
 const movieInfo = document.getElementById("movie-info");
+const moviePopup = document.getElementById("movie-popup");
+const popupCloseBtn = document.getElementById("close-popup");
+// const mealInfoEl = document.getElementById("meal-info");
 
 getComingSoon();
+
+
+
 
 async function getComingSoon() {
   const resp = await fetch(
@@ -19,28 +25,38 @@ async function getComingSoon() {
   addMovie(comingsoon,Poster.posters, true);
 }
 
+
+
+
+
 async function showMovieInfo(movieeData) {
-  // movieInfo.innerHTML = "";
+  movieInfo.innerHTML = "";
   const movieD = await fetch(
     `https://imdb-api.com/en/API/Title/k_7oioc1x6/${movieeData.id}/FullActor,FullCast,Posters,Images,Trailer,Ratings,Wikipedia,`
   );
   const movieeeData = await movieD.json();
   console.log(movieeeData);
-  // const moviee = document.createElement("div");
+  const moviee = document.createElement("div");
+  var poster = movieeeData.posters.posters[Math.floor(Math.random()*movieeeData.posters.posters.length)];
+  
 
-  // moviee.innerHTML = `
-  //     <h1>${movieeData.}</h1>
-  //     <img
-  //         src="${mealData.strMealThumb}"
-  //         alt="${mealData.strMeal}"/>
-  //     <p>${mealData.strInstructions}</p>
-  //     <h3>Ingredients:</h3>
-  //     <ul>${ingredients.map((ing) => `<li>${ing}</li>`).join("")}</ul>`;
+  moviee.innerHTML = `
+      <h1>${movieeeData.fullTitle}</h1>
+      <img
+          src="${poster.link}"
+          alt="${movieeeData.title}"/>
+      <p>${movieeeData.wikipedia.plotFull.plainText}</p>`;
+      // <h3>Ingredients:</h3>
+      // <ul>${ingredients.map((ing) => `<li>${ing}</li>`).join("")}</ul>`;
 
-  // mealInfoEl.appendChild(mealEl);
+  movieInfo.appendChild(moviee);
 
-  // mealPopup.classList.remove("hidden");
+  moviePopup.classList.remove("hidden");
 }
+
+
+
+
 
 function addMovie(movieData,posters, random = false) {
   console.log(movieData);
@@ -94,6 +110,10 @@ function addMovie(movieData,posters, random = false) {
   movies.appendChild(movie);
 }
 
+
+
+
+
 async function getMovieBySearch(term) {
   const resp = await fetch(
       `https://imdb-api.com/en/API/Search/k_7oioc1x6/${term}`
@@ -104,6 +124,10 @@ async function getMovieBySearch(term) {
 
   return movie;
 }
+
+
+
+
 
 searchBtn.addEventListener("click", async () => {
   movies.innerHTML = "";
@@ -117,4 +141,10 @@ searchBtn.addEventListener("click", async () => {
           addMovie(item);
       });
   }
+});
+
+
+
+popupCloseBtn.addEventListener("click", () => {
+  moviePopup.classList.add("hidden");
 });
